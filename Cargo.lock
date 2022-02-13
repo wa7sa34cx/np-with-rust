@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "threads-rust"
+name = "np-with-rust"
 version = "0.1.0"
