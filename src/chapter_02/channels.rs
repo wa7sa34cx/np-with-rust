@@ -1,5 +1,5 @@
-use std::thread;
 use std::sync::mpsc;
+use std::thread;
 
 pub fn run() {
     let rhs = vec![10, 20, 30, 40, 50, 60, 70];
@@ -14,7 +14,13 @@ pub fn run() {
         let lhs = lhs.clone();
         let tx = tx.clone();
         let handle = thread::spawn(move || {
-            let s = format!("Thread {} added {} and {}, result {}", i, rhs[i], lhs[i], rhs[i] + lhs[i]);
+            let s = format!(
+                "Thread {} added {} and {}, result {}",
+                i,
+                rhs[i],
+                lhs[i],
+                rhs[i] + lhs[i]
+            );
             tx.clone().send(s).unwrap();
         });
         let _ = handle.join().unwrap();
